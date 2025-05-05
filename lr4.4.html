@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Розбивка рядка</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #ecf0f1;
+      color: #2c3e50;
+      text-align: center;
+      padding: 50px;
+    }
+
+    h2 {
+      color: #34495e;
+      margin-bottom: 30px;
+    }
+
+    textarea {
+      width: 80%;
+      height: 120px;
+      padding: 12px;
+      font-size: 16px;
+      border: 2px solid #3498db;
+      border-radius: 8px;
+      margin: 10px 0;
+      resize: none;
+      outline: none;
+    }
+
+    textarea:focus {
+      border-color: #2980b9;
+    }
+
+    button {
+      padding: 12px 20px;
+      font-size: 16px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    h3 {
+      margin-top: 30px;
+      font-size: 22px;
+      color: #34495e;
+    }
+
+    pre {
+      background-color: #f4f6f7;
+      padding: 20px;
+      border-radius: 8px;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      font-size: 18px;
+      width: 80%;
+      margin: 20px auto;
+      border: 2px solid #bdc3c7;
+    }
+
+  </style>
+</head>
+<body>
+
+  <h2>Розбивка рядка на кілька рядків (після кожних 3 слів)</h2>
+
+  <textarea id="inputText" placeholder="Введіть текст тут..."></textarea><br>
+  <button onclick="processText()">Обробити</button>
+
+  <h3>Результат:</h3>
+  <pre id="outputText"></pre>
+
+  <script>
+    function strikeStr(str) {
+      const words = str.trim().split(/\s+/);
+      if (words.length <= 3) return str;
+
+      let result = '';
+      for (let i = 0; i < words.length; i++) {
+        result += words[i] + ' ';
+        if ((i + 1) % 3 === 0 && i !== words.length - 1) {
+          result += '\n';
+        }
+      }
+      return result.trim();
+    }
+
+    function processText() {
+      const input = document.getElementById("inputText").value;
+      const output = strikeStr(input);
+      document.getElementById("outputText").textContent = output;
+    }
+  </script>
+
+</body>
+</html>

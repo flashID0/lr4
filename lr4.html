@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Перша літера у верхньому регістрі</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f9f9f9;
+      padding: 50px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #2c3e50;
+      margin-bottom: 20px;
+    }
+
+    input, button {
+      padding: 12px 20px;
+      font-size: 16px;
+      margin: 10px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      width: 280px;
+    }
+
+    input:focus, button:focus {
+      outline: none;
+      border-color: #3498db;
+    }
+
+    button {
+      background-color: #27ae60;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #2ecc71;
+    }
+
+    p {
+      font-size: 18px;
+      color: #34495e;
+      margin-top: 20px;
+    }
+
+    .result {
+      font-size: 20px;
+      font-weight: bold;
+      color: #fff;
+      background-color: #2ecc71;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 20px;
+      display: inline-block;
+      width: 300px;
+    }
+
+    .error {
+      background-color: #e74c3c;
+    }
+  </style>
+</head>
+<body>
+  <h1>Заміна першої літери на велику</h1>
+  <input type="text" id="textInput" placeholder="Введіть текст, наприклад: василь">
+  <button onclick="convertFirstLetter()">Перетворити</button>
+
+  <div id="result" class="result"></div>
+
+  <script>
+    function ucFirst(str) {
+      if (!str) return str;
+      return str[0].toUpperCase() + str.slice(1);
+    }
+
+    function convertFirstLetter() {
+      const input = document.getElementById("textInput").value;
+      const result = document.getElementById("result");
+
+      if (!input) {
+        result.textContent = "Будь ласка, введіть текст.";
+        result.classList.add("error");
+        return;
+      }
+
+      result.textContent = `Результат: ${ucFirst(input)}`;
+      result.classList.remove("error");
+    }
+  </script>
+</body>
+</html>
